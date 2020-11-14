@@ -1,0 +1,16 @@
+{
+  "name": "webRTCExample",
+  "version": "1.0.0",
+  "main": "index.js",
+	"license": "MIT",
+	"scripts": {
+		"dev":"nodemon index.js"
+	},
+  "dependencies": {
+    "express": "^4.17.1",
+    "socket.io": "^3.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  }
+}
