@@ -1,3 +1,1 @@
-```
-npx degit AtelierNum/design_portfolio/webRTC myApp
-```
+`npx degit AtelierNum/boilerplates/webRTC#main myApp`
