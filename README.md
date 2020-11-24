@@ -11,4 +11,4 @@ You need nodejs to get the files easily : https://nodejs.org/en/download/
 
 * [P5.js](P5JS)
     
-    * [getting started (a.k.a hello world)](P5JS/hello_world)
+    * [getting started (a.k.a hello world)](p5JS/hello_world)
