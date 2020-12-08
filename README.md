@@ -16,3 +16,4 @@ You need nodejs to get the files easily : https://nodejs.org/en/download/
 * [Node.js](nodeJS)
 
     * [Video chat with WebRTC](nodeJS/webRTC)
+    * [OSC messaging](nodeJS/osc)
