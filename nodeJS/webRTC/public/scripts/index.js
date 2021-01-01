@@ -2,15 +2,61 @@
 let isAlreadyCalling = false;
 let getCalled = false;
 
-const existingCalls = [];
+let localStream = null;
 
+const peers = {
+	//<remoteSocketId>:<RTCPeerConnection>
+}
+
+async function getPeerConnection(socketId){
+	if(peers[socketId]){
+		return peers[socketId];
+	}
+
+	peers[socketId] = new RTCPeerConnection()
+
+	peers[socketId].ontrack = function(rtcTrackEvent) {
+		console.dir(peers);
+		if(rtcTrackEvent.track.kind == "video"){
+			addVideoContainer(socketId,rtcTrackEvent.streams[0]);
+		}
+	};
+
+	const stream = await getLocalMediaStream();
+	stream.getTracks().forEach(track => peers[socketId].addTrack(track, stream));
+	
+	return peers[socketId];
+}
+
+async function getLocalMediaStream(){
+	if(localStream){
+		return localStream;
+	}
+
+	const stream = await navigator.mediaDevices.getUserMedia({video:true, audio: true});
+	localStream = stream;
+	return stream;
+}
 
 //actuall RTC work
 const { RTCPeerConnection, RTCSessionDescription } = window;
 
-const peerConnection = new RTCPeerConnection();
+//media accessing and manipulation
+getLocalMediaStream().then(function(stream) {
+	const localVideo = document.getElementById("local-video");
+	if (localVideo) {
+		localVideo.srcObject = stream;
+	}
+
+	// stream.getTracks().forEach(track => peerConnection.addTrack(track, stream));
+	
+})
+.catch(function(err) {
+	console.error(err);
+});
 
 async function callUser(socketId) {
+	const peerConnection = await getPeerConnection(socketId)
 	const offer = await peerConnection.createOffer();
 	await peerConnection.setLocalDescription(new RTCSessionDescription(offer));
 	
@@ -19,27 +65,6 @@ async function callUser(socketId) {
 		to: socketId
 	});
 }
-
-peerConnection.ontrack = function({ streams: [stream] }) {
-  const remoteVideo = document.getElementById("remote-video");
-  if (remoteVideo) {
-    remoteVideo.srcObject = stream;
-  }
-};
-
-//media accessing and manipulation
-navigator.mediaDevices.getUserMedia({video:true, audio: true})
-.then(function(stream) {
-	const localVideo = document.getElementById("local-video");
-	if (localVideo) {
-		localVideo.srcObject = stream;
-	}
-
-	stream.getTracks().forEach(track => peerConnection.addTrack(track, stream));
-})
-.catch(function(err) {
-	console.error(err);
-});
 
 //socket stuff
 var socket = io();
@@ -57,20 +82,7 @@ socket.on("remove-user", ({ socketId }) => {
 });
 
 socket.on("call-made", async data => {
-  if (getCalled) {
-    const confirmed = confirm(
-      `User "Socket: ${data.socket}" wants to call you. Do accept this call?`
-    );
-
-    if (!confirmed) {
-      socket.emit("reject-call", {
-        from: data.socket
-      });
-
-      return;
-    }
-  }
-
+  const peerConnection = await getPeerConnection(data.socket)
   await peerConnection.setRemoteDescription(
     new RTCSessionDescription(data.offer)
   );
@@ -85,14 +97,12 @@ socket.on("call-made", async data => {
 });
 
 socket.on("answer-made", async data => {
+	const peerConnection = await getPeerConnection(data.socket)
 	await peerConnection.setRemoteDescription(
 		new RTCSessionDescription(data.answer)
 	);
-	
-	if (!isAlreadyCalling) {
-		callUser(data.socket);
-		isAlreadyCalling = true;
-	}
+		
+	callUser(data.socket);
 });
 
 socket.on("call-rejected", data => {
@@ -143,4 +153,16 @@ function unselectUsersFromList() {
   alreadySelectedUser.forEach(el => {
     el.setAttribute("class", "active-user");
   });
+}
+
+function addVideoContainer(peerSocketId, srcObj){
+	const vcContainer = document.getElementsByClassName("video-chat-container")[0];
+
+	const newVCContainer = document.createElement("video");
+	newVCContainer.setAttribute("autoplay", "true");
+	newVCContainer.setAttribute("class","remote-video");
+	newVCContainer.setAttribute("id",peerSocketId);
+	newVCContainer.srcObject = srcObj;
+
+	vcContainer.appendChild(newVCContainer);
 }

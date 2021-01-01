@@ -80,6 +80,14 @@ body {
   padding: 0 20px;
   flex: 1;
   position: relative;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.video-chat-container * {
+  width: 320px;
+  height: 180px;
+  margin: 20px;
 }
 
 .talk-info {
@@ -89,8 +97,6 @@ body {
 
 .remote-video {
   border: 1px solid #cddfe7;
-  width: 100%;
-  height: 100%;
   box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
 }
 
