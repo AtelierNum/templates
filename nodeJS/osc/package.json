@@ -1,0 +1,17 @@
+{
+	"name": "interactops",
+	"version": "1.0.0",
+	"main": "index.js",
+	"license": "MIT",
+	"scripts": {
+		"dev": "nodemon index.js",
+		"osc:debug": "osc-debugger"
+	},
+	"dependencies": {
+		"node-osc": "^5.2.1"
+	},
+	"devDependencies": {
+		"nodemon": "^2.0.6",
+		"osc-debugger": "^1.2.1"
+	}
+}
