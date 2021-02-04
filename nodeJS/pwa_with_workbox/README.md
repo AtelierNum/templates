@@ -4,7 +4,7 @@
 
 ## What is a pwa ?
 
-Progressive Web Apps are web apps that use emerging web browser APIs and features along with traditional progressive enhancement strategy to bring a native app-like user experience to cross-platform web applications. Progressive Web Apps are a useful design pattern, though they aren't a formalized standard. For more detaile, [PWA](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps)
+Progressive Web Apps are web apps that use emerging web browser APIs and features along with traditional progressive enhancement strategy to bring a native app-like user experience to cross-platform web applications. Progressive Web Apps are a useful design pattern, though they aren't a formalized standard. For more details, [PWA](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps)
 
 ## What does it do ? ✨
 
