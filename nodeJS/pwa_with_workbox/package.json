@@ -1,0 +1,15 @@
+{
+  "name": "pwa_workbox_template",
+  "version": "1.0.0",
+  "description": "pwa_workbox_template",
+  "main": "workbox-config.js",
+  "author": "Armand Lemaitre",
+  "license": "Apache-2.0",
+  "scripts": {
+    "build": "workbox injectManifest workbox-config.js"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "workbox-cli": "^6.1.0"
+  }
+}
