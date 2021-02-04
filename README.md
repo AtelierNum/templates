@@ -17,3 +17,4 @@ You need nodejs to get the files easily : https://nodejs.org/en/download/
 
     * [Video chat with WebRTC](nodeJS/webRTC)
     * [OSC messaging](nodeJS/osc)
+    * [pwa_workbox_template](nodeJS/pwa_workbox_template)
