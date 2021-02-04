@@ -1,8 +1,8 @@
 module.exports = {
-  globDirectory: 'docs/', /* build folder */
+  globDirectory: 'build/', /* build folder */
   globPatterns: [
     '**/*.{html,json,js,css}' /* cached files */
   ],
-  swDest: 'docs/sw.js', /* destination SW file */
+  swDest: 'build/sw.js', /* destination SW file */
   swSrc: "sw-src.js" /* configuration SW file */
 };
