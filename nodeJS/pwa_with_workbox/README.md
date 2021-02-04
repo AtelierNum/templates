@@ -1,4 +1,4 @@
-# [pwa_workbox_template](https://arlemaitre.github.io/pwa_workbox_template/)
+# pwa_workbox_template
 
 **Level** : ![](https://img.shields.io/badge/Level-Intermediate-yellow)
 
