@@ -1,0 +1,59 @@
+{
+  "projectName": "templates",
+  "projectOwner": "AtelierNum",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "commitConvention": "none",
+  "contributorsPerLine": 7,
+  "types": {
+    "templates": {
+      "symbol": "📝",
+      "description": "Has published some templates"
+    }
+  },
+  "contributors": [
+    {
+      "login": "zhakkarn",
+      "name": "Valentin Dupas",
+      "avatar_url": "https://avatars.githubusercontent.com/u/6611316?v=4",
+      "profile": "https://github.com/zhakkarn",
+      "contributions": [
+        "mentoring",
+        "templates"
+      ]
+    },
+    {
+      "login": "b2renger",
+      "name": "b2renger",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1818874?v=4",
+      "profile": "http://b2renger.github.io/",
+      "contributions": [
+        "mentoring",
+        "templates"
+      ]
+    },
+    {
+      "login": "R4ph3rd",
+      "name": "Raphaël Perraud",
+      "avatar_url": "https://avatars.githubusercontent.com/u/43202876?v=4",
+      "profile": "https://github.com/R4ph3rd",
+      "contributions": [
+        "templates"
+      ]
+    },
+    {
+      "login": "arlemaitre",
+      "name": "arlemaitre",
+      "avatar_url": "https://avatars.githubusercontent.com/u/33665471?v=4",
+      "profile": "https://www.armandlemaitre.fr/",
+      "contributions": [
+        "templates"
+      ]
+    }
+  ]
+}
