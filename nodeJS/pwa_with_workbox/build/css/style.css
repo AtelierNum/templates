@@ -1,0 +1,18 @@
+h1 {
+    color: black;
+    font-size: 40px;;
+}
+img{
+    width:100px;
+    height:100px
+}
+
+span{
+    font-style: italic;
+}
+button{
+    width:40vw;
+    height:20vw;
+    max-width: 200px;
+    max-height: 70px;;
+}

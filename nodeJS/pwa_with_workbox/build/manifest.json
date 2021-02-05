@@ -1,0 +1,38 @@
+{
+    "theme_color": "#1f2120",
+    "background_color": "#1f2120",
+    "display": "standalone",
+    "prefer_related_applications": false, 
+    "scope": ".",
+    "start_url": ".",
+    "orientation": "portrait",
+    "name": "PWA with workbox",
+    "short_name": "Pwa",
+    "description": "Pwa description",
+    "icons": [
+        {
+            "src": "assets/icon-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "assets/icon-256x256.png",
+            "sizes": "256x256",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "assets/icon-384x384.png",
+            "sizes": "384x384",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "assets/icon-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ]
+}
