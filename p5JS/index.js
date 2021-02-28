@@ -37,7 +37,7 @@ fs.readFile('./showcase/index.html', 'utf8', (err, data) => {
 
     for (let sketch in mySketches){
         sketchesTags += `<li>
-                <iframe id="${sketch}" src="${mySketches[sketch].find(file => file.includes('.html'))}" width="200" height="200"  frameborder="0">
+                <iframe id="${sketch}" src="${mySketches[sketch].find(file => file.includes('.html'))}" frameborder="0">
             </li>   
         `;
     }
