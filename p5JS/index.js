@@ -8,7 +8,7 @@ app.use(express.static(join(__dirname,'showcase')));
 app.use('/node_modules', express.static(join(__dirname,'node_modules')));
 app.use('/sketches', express.static(join(__dirname,'sketches')));
 
-let sketches = {};
+let sketches = [];
 
 const getSketches = (dir) => {
     fs.readdirSync(dir).forEach(function(path) {
@@ -18,11 +18,9 @@ const getSketches = (dir) => {
         if (stat && stat.isDirectory()) {
             getSketches(file);
         } else if (stat && stat.isFile()){
-            let sketchName = dir.split('/')[dir.split('/').length -1];
-            if (sketches[sketchName]){
-                sketches[sketchName].push(file);
-            } else {
-                sketches[sketchName] = [file];
+            let sketchName = dir.split('/')[dir.split('/').length -1];           
+            if (file.includes('.html')){
+                sketches[sketchName] = file;
             }
         }
     });
@@ -41,8 +39,8 @@ fs.readFile('./showcase/index.html', 'utf8', (err, data) => {
 
     for (let sketch in mySketches){
         sketchesTags += `<li>
-                <iframe id="${sketch.split(' ').join('')}" src="${mySketches[sketch].find(file => file.includes('.html'))}" frameborder="0"></iframe>
-                <a href="${mySketches[sketch].find(file => file.includes('.html'))}"></a>
+                <iframe id="${sketch.split(' ').join('')}" src="${mySketches[sketch]}" frameborder="0"></iframe>
+                <a href="${mySketches[sketch]}"></a>
             </li>   
         `;
     }
