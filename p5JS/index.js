@@ -1,9 +1,13 @@
+const fs = require('fs');
 const express = require("express");
 const app = express();
 const http = require("http").createServer(app)
 const {join} = require("path");
 
-const fs = require('fs');
+app.use(express.static(join(__dirname,'showcase')));
+app.use('/node_modules', express.static(join(__dirname,'node_modules')));
+app.use('/sketches', express.static(join(__dirname,'sketches')));
+
 let sketches = {};
 
 const getSketches = (dir) => {
@@ -37,22 +41,21 @@ fs.readFile('./showcase/index.html', 'utf8', (err, data) => {
 
     for (let sketch in mySketches){
         sketchesTags += `<li>
-                <iframe id="${sketch}" src="${mySketches[sketch].find(file => file.includes('.html'))}" frameborder="0">
+                <iframe id="${sketch.split(' ').join('')}" src="${mySketches[sketch].find(file => file.includes('.html'))}" frameborder="0"></iframe>
             </li>   
         `;
     }
 
-    fs.writeFile('showcase/index.html', part1 + sketchesTags + part2, function (err) {
+    fs.writeFile('showcase/index.html', part1 + '\n' + sketchesTags + part2, function (err) {
         if (err) return console.warn(err);
         console.log('Sketches html created.')
+
+        const port = 3002;
+        http.listen(port, () => {
+            console.log("App started on http://localhost:" + port);
+        });
     })
 });
 
-app.use(express.static(join(__dirname,'showcase')));
-app.use('/node_modules', express.static(join(__dirname,'node_modules')));
-app.use('/sketches', express.static(join(__dirname,'sketches')));
 
-const port = 3002;
-http.listen(port, () => {
-	console.log("App started on http://localhost:" + port);
-});
+
