@@ -1,7 +1,9 @@
 All of our boilerplate goodies in one place for easy browsing. Each should come with its own readme.
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+
 [![All Contributors](https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square)](#contributors-)
+
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 You need nodejs to get the files easily : https://nodejs.org/en/download/
@@ -12,15 +14,16 @@ You need nodejs to get the files easily : https://nodejs.org/en/download/
 
   - [How to track skeleton with a kinect2](TouchDesigner/SkeletonTracking_with_kinect2/)
 
-- [P5.js](P5JS)
+- [P5.js](p5JS)
 
   - [Getting started (a.k.a hello world)](p5JS/hello_world)
+  - [Communicating data with an arduino](p5JS/with_arduino_over_serial)
 
 - [Node.js](nodeJS)
 
   - [Video chat with WebRTC](nodeJS/webRTC)
   - [OSC messaging](nodeJS/osc)
-  - [Pwa_with_workbox](nodeJS/pwa_workbox_template)
+  - [Pwa with workbox](nodeJS/pwa_with_workbox)
 
 ## Contributors ✨
 
