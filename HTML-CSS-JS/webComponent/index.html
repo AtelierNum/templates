@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>web component demo</title>
+		<!-- import the script which defines our component, you could define multiple component in one file -->
+		<script type="module" src="custom-button.js"></script>
+		<script>
+			function noop() {
+				console.log(`"Nothing."`);
+				alert(`"Nothing."`);
+			}
+		</script>
+	</head>
+	<body>
+		<!-- use your custom component like any other html tag -->
+		<custom-button onclick="noop()">I do nothing</custom-button>
+	</body>
+</html>
