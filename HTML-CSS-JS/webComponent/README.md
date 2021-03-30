@@ -20,7 +20,7 @@ Much like any webpage, you can either open the index.html file in your favorite 
 
 ## How to modify ? 🔩 🔨
 
-The inner workings of our custom component is in `custom-button.js`, you'll find it's structure and styling.
+The inner workings of our custom component is in `custom-button.js`, you'll find its structure and styling.
 
 ## Additional resources 📄 📗
 
