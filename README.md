@@ -10,20 +10,24 @@ You need nodejs to get the files easily : https://nodejs.org/en/download/
 
 ## Table of Contents
 
-- [Touch Designer](TouchDesigner)
+- [HTML/CSS/JS](HTML-CSS-JS)
 
-  - [How to track skeleton with a kinect2](TouchDesigner/SkeletonTracking_with_kinect2/)
-
-- [P5.js](p5JS)
-
-  - [Getting started (a.k.a hello world)](p5JS/hello_world)
-  - [Communicating data with an arduino](p5JS/with_arduino_over_serial)
+  - [Custom HTML element](HTML-CSS-JS/custom_element)
 
 - [Node.js](nodeJS)
 
   - [Video chat with WebRTC](nodeJS/webRTC)
   - [OSC messaging](nodeJS/osc)
   - [Pwa with workbox](nodeJS/pwa_with_workbox)
+
+- [P5.js](p5JS)
+
+  - [Getting started (a.k.a hello world)](p5JS/hello_world)
+  - [Communicating data with an arduino](p5JS/with_arduino_over_serial)
+
+- [Touch Designer](TouchDesigner)
+
+  - [How to track skeleton with a kinect2](TouchDesigner/SkeletonTracking_with_kinect2/)
 
 ## Contributors ✨
 

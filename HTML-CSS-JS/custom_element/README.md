@@ -1,6 +1,6 @@
 # Make and use custom Web elements
 
-**Level** : ![](https://img.shields.io/badge/Level-Intermediate-yellow)
+**Level** : ![](https://img.shields.io/badge/Level-Beginner-brightgreen)
 
 ## What does it do ? ✨
 
