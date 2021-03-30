@@ -1,7 +1,7 @@
 // we create a style tag containing the CSS specific to our component
 // cloning content from a <template> tag is faster than using .innerHTML() on the main element
-const template = document.createElement("template");
-template.innerHTML = `
+const style = document.createElement("template");
+style.innerHTML = `
 <style>
 	/*:host references the shadowRoot of our custom element*/
 	:host > button{
@@ -25,6 +25,16 @@ template.innerHTML = `
 </style>
 `;
 
+//Here we put the HTML of our element
+//inside the button we just add we put a special <slot> element
+//it will contain what's between the <custom-button></custom-button>
+const markup = document.createElement("template");
+markup.innerHTML = `
+<button>
+	<slot></slot>
+</button>
+`;
+
 //the first half of the bare minimum is to create a class representing our element
 //which inerhit from the HTMLElement class
 class CustomButton extends HTMLElement {
@@ -38,17 +48,9 @@ class CustomButton extends HTMLElement {
 		//also, interestingly, the outside CSS dosen't affect the CSS inside our shadow root
 		this.attachShadow({ mode: "open" });
 
-		//here we inject a copy of the <style> tag present at the top of our file
-		this.shadowRoot.appendChild(template.content.cloneNode(true));
-
-		//we'll create a <button> tag and we'll attach it in our shadow root
-		const container = document.createElement("button");
-		this.shadowRoot.appendChild(container);
-
-		//inside the button we just add we put a special <slot> element
-		//it will contain what's between the <custom-button></custom-button>
-		const content = document.createElement("slot");
-		container.appendChild(content);
+		//here we inject a copy of the CSS and HTML template tag present at the top of our file
+		this.shadowRoot.appendChild(markup.content.cloneNode(true));
+		this.shadowRoot.appendChild(style.content.cloneNode(true));
 	}
 }
 
