@@ -8,7 +8,7 @@ You'll see here how to make your own reusable HTML tags.
 
 Like this button which comes already styled.
 
-![](./_readme_resources/button.png)
+![](_readme_resources/button.png)
 
 ## Software dependencies 🌈 📂
 
