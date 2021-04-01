@@ -1,4 +1,4 @@
-# Extension executing scripts on selected pages
+# Extension executing code when its button is clicked
 
 **Level** : ![](https://img.shields.io/badge/Level-Beginner-brightgreen) 
 
@@ -42,8 +42,9 @@ Edge  [Sideload an extension](https://docs.microsoft.com/en-us/microsoft-edge/ex
 ## How to modify ? 🔩 🔨
 
 The key file is the manifest.json
-- The role of the manifest is to describe to the browser what the extension will do, which file are going to be used, in which way, and what are the special permissions required by your extension (like storing data, making requests, looking at the cookies etc ...)
 - The "background" part list the scrpits to start your extension.
+- The role of the manifest is to describe to the browser what the extension will do, which file are going to be used, in which way, and what are the special permissions required by your extension (like storing data, making requests, looking at the cookies etc ...)
+
 
 
 ## Additional resources 📄 📗
