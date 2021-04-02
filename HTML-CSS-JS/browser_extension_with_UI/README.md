@@ -5,7 +5,7 @@
 ## What does it do ? ✨
 This extension will display a popup containing a UI when you click on it. 
 
-In this exact case our script will show a number and two button make the number go up or down.
+In this exact case our script will show a number and two button to make the number go up or down.
 
 ## Software dependencies 🌈 📂
 You'll need a web browser to load your extension in.
