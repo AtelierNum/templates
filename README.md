@@ -12,6 +12,10 @@ You need nodejs to get the files easily : https://nodejs.org/en/download/
 
 - [HTML/CSS/JS](HTML-CSS-JS)
 
+  - [Atomatic scripts for the browser](HTML-CSS-JS/browser_script)
+  - [Browser extension with icon](HTML-CSS-JS/browser_extension_with_icon)
+  - [Browser extension with persistent memory](HTML-CSS-JS/browser_extension_with_persistent_variables)
+  - [Browser extension with User Interface](HTML-CSS-JS/browser_extension_with_UI)
   - [Custom HTML element](HTML-CSS-JS/custom_element)
 
 - [Node.js](nodeJS)
