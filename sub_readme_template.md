@@ -14,4 +14,8 @@
 
 ## How to modify ? 🔩 🔨
 
+## Be Careful ⚠️
+
+(This section should be used as little as possible, but sometimes you need to let the user mind some limitations coming with the template)
+
 ## Additional resources 📄 📗
