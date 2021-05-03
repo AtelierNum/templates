@@ -6,7 +6,8 @@ All of our boilerplate goodies in one place for easy browsing. Each should come 
 
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
-You need nodejs to get the files easily : https://nodejs.org/en/download/
+To get the templates easily you can install our custom downloader here : https://ateliernum.github.io/fido/
+More info about it here : https://github.com/AtelierNum/fido
 
 ## Table of Contents
 
