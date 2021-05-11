@@ -18,6 +18,6 @@ for (const name of Object.keys(nets)) {
     }
 }
 
-console.log(`Enter ${results.wlp59s0[0]}:[yourlocalhost] on your phone`);
+console.log(`Enter ${results.wlp59s0[0]}:[yourlocalhost] on your phone \n \n`);
 
 return results[0];
