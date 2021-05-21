@@ -11,6 +11,10 @@ More info about it here : https://github.com/AtelierNum/fido
 
 ## Table of Contents
 
+- [Arduino](Arduino)
+
+  - [Wifi Sniffer](Arduino/Wifi_sniffer)
+
 - [HTML/CSS/JS](HTML-CSS-JS)
 
   - [Automatic scripts for the browser](HTML-CSS-JS/browser_script)
@@ -29,6 +33,7 @@ More info about it here : https://github.com/AtelierNum/fido
 
   - [Getting started (a.k.a hello world)](p5JS/hello_world)
   - [Communicating data with an arduino](p5JS/with_arduino_over_serial)
+  - [Record and Retrieve data from a database with firebase](p5JS/database_with_firebase)
 
 - [Touch Designer](TouchDesigner)
 
