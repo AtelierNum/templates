@@ -33,6 +33,12 @@ More info about it here : https://github.com/AtelierNum/fido
   - [Communicating data with an arduino](p5JS/with_arduino_over_serial)
   - [Record and Retrieve data from a database with firebase](p5JS/database_with_firebase)
 
+- [Unity](Unity)
+
+  - [Communicating with an Arduino](Unity/Arduino_Unity_communication)
+  - [Getting started with AR by using AR Foundation](Unity/hello_AR_Foundation)
+  - [Getting started with AR by using AR Foundation and the URP](Unity/hello_AR_Foundation_with_URP)
+
 - [Touch Designer](TouchDesigner)
 
   - [How to track skeleton with a kinect2](TouchDesigner/SkeletonTracking_with_kinect2/)
