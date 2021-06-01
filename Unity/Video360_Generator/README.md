@@ -22,6 +22,8 @@
 - You can also make a stereoscopic video for VR cardboard. 
 ## What hardware is needed ? 💾 🔌
 - PC/Mac/Linux
+## Software dependencies 🌈 📂
+- Unity 2020.3.X LTS or newer.
 
 ## How to run ? 🚀
 
