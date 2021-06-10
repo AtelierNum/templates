@@ -1,0 +1,7 @@
+{
+	"version": 1,
+	"authors": ["bob", "alice"],
+	"level": 0,
+	"isLinkTo": "AtelierNum/templates/some_tech/some_template",
+	"hidden": false
+}
