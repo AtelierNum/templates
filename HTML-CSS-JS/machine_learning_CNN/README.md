@@ -31,5 +31,5 @@ You can modify the source of your model (video, image ..) in `cnn.js` by replaci
 
 The rest of the code is self-explanatory and commented.
 
-To modify the structure of the neural networks, I invite you to watch the videos of [The Coding Train](https://www.youtube.com/watch?v=qPKsVAI_W6M&t=79s&ab_channel=TheCodingTrain) and to experiment.
+To modify the structure of the neural networks, I invite you to watch the videos of [The Coding Train](https://www.youtube.com/watch?v=qPKsVAI_W6M&t=79s&ab_channel=TheCodingTrain) and experiment.
 
