@@ -1,8 +1,8 @@
-let label = ''; // Contient le label de chaque classe
-let cnn; // Contient notre modèle
-let consoleOutput = document.getElementById('console'); // Affiche des informations lier au modèle
-let video = document.getElementById('video'); // Contient le flux vidéo
-let NbEpochs = 20; // Nombre d'epochs
+let label = ''; // Contains the label of each class
+let cnn; // Contains our model
+let consoleOutput = document.getElementById('console'); // Displays information related to the model
+let input = document.getElementById('video'); // Contains the video stream
+let NbEpochs = 20; // Number of epochs
 
 let class_1 = document.getElementById("class_1");
 let class_2 = document.getElementById("class_2");
@@ -13,12 +13,12 @@ let loadData = document.getElementById("loadData");
 let saveModel = document.getElementById("saveModel");
 let loadModel = document.getElementById("loadModel");
 
-// Configuration de notre modèle
+// Configuration of our model
 let options = {
-    task: 'imageClassification', // Regression|classification|imageClassification, déterminate la tache de notre modèle
-    debug: true, // Affiche l'interface d'entrainement
-    inputs: [video.width, video.height, 4], // Determine la forme de notre tableau d'entrée, 4 pour les couleurs 'rgba'
-    layers: [{ // Architecture de notre modèle
+    task: 'imageClassification', // Regression | classification | imageClassification, determine the task of our model
+    debug: true, // Display the training interface
+    inputs: [input.width, input.height, 4], // Determine the shape of our input array, 4 for 'rgba' colors
+    layers: [{ // Neural network architecture
             type: 'conv2d',
             filters: 8,
             kernelSize: 5,
@@ -55,23 +55,23 @@ let options = {
     ]
 };
 
-cnn = ml5.neuralNetwork(options); // Assignation des options à notre modèle
+cnn = ml5.neuralNetwork(options); // Assigning options to our model
 
-// Fonction de rappel après l'entrainement du modèle
+// Callback function after training the model
 function finishedTraining() {
     consoleOutput.textContent = 'training complete';
     classifyVideo();
 }
 
-// Lancement de la classification qui prend vidéo en entré
+// Starts the classification which takes video as input
 function classifyVideo() {
     let inputImage = {
-        image: video,
+        image: input,
     };
     cnn.classify(inputImage, gotResults);
 }
 
-// Affiche les résultats contenus dans l'objet results
+// Displays the results contained in the results object
 function gotResults(error, results) {
     if (error) {
         return;
@@ -81,11 +81,11 @@ function gotResults(error, results) {
     for (let i = 0; i < results.length; i++) {
         consoleOutput.insertAdjacentHTML('afterbegin', "<p>" + results[i].label + ": " + results[i].confidence * 100 + "</p><br>");
     }
-    classifyVideo(); // On relance la classification
+    classifyVideo(); // We relaunch the classification
 }
 
 
-// On normalise les données et on entraine notre modèle
+//We standardize the data and train our model
 function training() {
     cnn.normalizeData();
     cnn.train({
@@ -95,11 +95,11 @@ function training() {
     );
 }
 
-// On ajoute un exemple avec le label assigné
+// We add an example with the assigned label
 function addExample(labelValue) {
     console.log("ok")
     consoleOutput.textContent = 'Adding example: ' + labelValue;
-    cnn.addData({ image: video }, { label: labelValue });
+    cnn.addData({ image: input }, { label: labelValue });
 }
 
 
@@ -108,23 +108,23 @@ class_1.addEventListener('click', () => { addExample('class_1') });
 class_2.addEventListener('click', () => { addExample('class_2') });
 class_3.addEventListener('click', () => { addExample('class_3') });
 
-saveData.addEventListener('click', () => { cnn.saveData() }); // Sauvegarde des données
-saveModel.addEventListener('click', () => { cnn.save() }); // Sauvegarde du modèle
+saveData.addEventListener('click', () => { cnn.saveData() }); // Saving data
+saveModel.addEventListener('click', () => { cnn.save() }); // Saving the model
 
 
-// Chargement des données
+// Loading data
 loadData.addEventListener('click', () => {
     cnn.loadData('data/data.json', () => {
         console.log("data loaded");
     });
 })
 
-// Chargement du modèle
+// Loading the model
 loadModel.addEventListener('click', () => {
     const modelDetails = {
         model: 'model/model.json',
         metadata: 'model/model_meta.json',
         weights: 'model/model.weights.bin'
     }
-    cnn.load(modelDetails, () => { classifyVideo() }); // On lance la classification
+    cnn.load(modelDetails, () => { classifyVideo() }); // We launch the classification
 })
