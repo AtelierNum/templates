@@ -30,7 +30,7 @@ To build the service worker.
 npm run build
 ```
 
-Open [index.html](https://arlemaitre.github.io/pwa_workbox_template/).
+Open index.html.
 
 ## How to modify ? 🔩 🔨
 
