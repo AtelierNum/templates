@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://unpkg.com/ml5@latest/dist/ml5.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="utf-8" />
+
+</head>
+
+<body>
+    <div id="value"></div>
+
+    <video id="video" width="176" height="120" autoplay></video>
+    <canvas id="canvas" width="858" height="480"></canvas>
+    <div>
+        <button id="class_1">Add class_1</button>
+        <button id="class_2">Add class_2</button>
+        <button id="class_3">Add class_3</button>
+        <br><br>
+        <button id="saveData">Save data</button>
+        <button id="loadData">Load data</button>
+        <button id="saveModel">Save model</button>
+        <button id="loadModel">Load model</button>
+        <br>
+        <br>
+        <button id="train">Train</button>
+    </div>
+
+    <div id="console"></div>
+    <div id="prob"></div>
+    <script type="module" src="camera.js"></script>
+    <script type="module" src="cnn.js"></script>
+
+</body>
+
+</html>
