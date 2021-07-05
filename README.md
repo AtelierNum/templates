@@ -20,6 +20,7 @@ More info about it here : https://github.com/AtelierNum/fido
   - [Browser extension with persistent memory](HTML-CSS-JS/browser_extension_with_persistent_variables)
   - [Browser extension with User Interface](HTML-CSS-JS/browser_extension_with_UI)
   - [Custom HTML element](HTML-CSS-JS/custom_element)
+  - [Machine learning CNN](HTML-CSS-JS/machine_learning_CNN)
 
 - [Node.js](nodeJS)
 
