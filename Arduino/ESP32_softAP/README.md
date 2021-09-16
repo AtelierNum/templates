@@ -33,6 +33,8 @@ This is what the ESP answer so you'll want to change that to embed the values yo
 client.println("this is a fully textual body, it could be HTML or JSON");
 ```
 
+Don't worry about the IP. In this config, the ESP will always have the 192.168.4.1 address. [More Info](https://192-168-4-1.com/)
+
 ## Be Careful ⚠️
 
 In this configuration both the ESP32 and the machine you'll connect on its network won't have access to the Internet.
