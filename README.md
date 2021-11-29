@@ -1,11 +1,15 @@
-All of our boilerplate goodies in one place for easy browsing. Each should come with its own readme.
-
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+
 [![All Contributors](https://img.shields.io/badge/all_contributors-5-orange.svg?style=flat-square)](#contributors-)
+
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
+
+All of our starter projects in one place for easy browsing. Each should come with its own readme.
 
 To get the templates easily you can install our custom downloader here : https://ateliernum.github.io/fido/
 More info about it here : https://github.com/AtelierNum/fido
+
+If you want to add your own template please see the [contribution guidelines](CONTRIBUTING.md).
 
 ## Table of Contents
 
