@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>arduino WS</title>
+  </head>
+  <body>
+    <h1>My magnificent page</h1>
+    <p>look at him go <span id="state"></span> 👀</p>
+
+    <button id="led-toggler">Toggle built-in LED</button>
+
+    <script type="module">
+      // These "sendToArduino" and "addArduinoListener" are how you will interect with the arduino
+      import { sendToArduino, addArduinoListener } from "./lib/arduino.js";
+
+      // Here for the example we call the "handleLedToggler" function every time the #led-toggler button is clicked
+      // this function will send the data to the arduino by providing strings to the "sendToArduino" function.
+      // the "sendToArduino" function expects strings looking like this "msgType=data" or "msgType1=someData,msgType2=otherData,msgType3=lmao"
+      // the message types have to be strings and the data must be numbers
+      const ledToggler = document.querySelector("#led-toggler");
+      ledToggler.addEventListener("click", handleLedTogglerClick);
+
+      let ledState = 0;
+      function handleLedTogglerClick() {
+        if (ledState == 1) {
+          sendToArduino("led=0");
+          ledState = 0;
+        } else {
+          sendToArduino("led=1");
+          ledState = 1;
+        }
+      }
+
+      // With "addArduinoListener" you can match a type of message to a function
+      // for example here, the "handleTimeReception" function will be called whenever the arduino will send a message of type "time"
+      // ... and the "handleAckReception"
+      addArduinoListener("time", handleTimeReception);
+      addArduinoListener("ACK", handleAckReception);
+
+      // these function will should have one parameter (you can call it how you want) which will contain the data fram the arduino
+      function handleTimeReception(time) {
+        document.querySelector("#state").textContent = time;
+      }
+
+      // these function will should have one parameter (you can call it how you want) which will contain the data fram the arduino
+      function handleAckReception(message) {
+        console.log(data);
+      }
+    </script>
+  </body>
+</html>

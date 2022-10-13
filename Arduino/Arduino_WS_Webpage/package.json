@@ -1,0 +1,40 @@
+{
+  "name": "terra-ligeria",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "bin":"index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "build": "pkg package.json",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zhakk-harn/terra-ligeria.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "CC0",
+  "bugs": {
+    "url": "https://github.com/zhakk-harn/terra-ligeria/issues"
+  },
+  "homepage": "https://github.com/zhakk-harn/terra-ligeria#readme",
+  "dependencies": {
+    "express": "^4.18.1",
+    "serialport": "^10.4.0",
+    "ws": "^8.8.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19",
+    "pkg": "^5.8.0"
+  },
+  "pkg": {
+    "outputPath": ".dist",
+    "assets": [
+      "static/*",
+      "node_modules/@serialport/bindings-cpp/prebuilds"
+    ]
+  }
+}
