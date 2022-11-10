@@ -15,6 +15,8 @@ If you want to add your own template please see the [contribution guidelines](CO
 
 - [Arduino](Arduino)
 
+  - [Communication between an Arduino and a web page both on the same computer](Arduino/Arduino_WS_Webpage/)
+  - [ESP32 serving HTTP requests without a router](Arduino/ESP32_softAP/)
   - [Wifi Sniffer](Arduino/Wifi_sniffer)
 
 - [HTML/CSS/JS](HTML-CSS-JS)
@@ -28,6 +30,7 @@ If you want to add your own template please see the [contribution guidelines](CO
 
 - [Node.js](nodeJS)
 
+  - [Listen to the serial communication from an Arduino](nodeJS/arduino_Node_communication/)
   - [Video chat with WebRTC](nodeJS/webRTC)
   - [OSC messaging](nodeJS/osc)
   - [Pwa with workbox](nodeJS/pwa_with_workbox)
@@ -43,6 +46,7 @@ If you want to add your own template please see the [contribution guidelines](CO
   - [Communicating with an Arduino](Unity/Arduino_Unity_communication)
   - [Getting started with AR by using AR Foundation](Unity/hello_AR_Foundation)
   - [Getting started with AR by using AR Foundation and the URP](Unity/hello_AR_Foundation_with_URP)
+  - [Record 360 degrees captures of your gameplay and scene](Unity/Video360_Generator/)
 
 - [Touch Designer](TouchDesigner)
 
