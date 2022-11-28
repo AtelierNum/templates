@@ -30,7 +30,6 @@ If you want to add your own template please see the [contribution guidelines](CO
 
 - [Node.js](nodeJS)
 
-  - [Listen to the serial communication from an Arduino](nodeJS/arduino_Node_communication/)
   - [Video chat with WebRTC](nodeJS/webRTC)
   - [OSC messaging](nodeJS/osc)
   - [Pwa with workbox](nodeJS/pwa_with_workbox)
