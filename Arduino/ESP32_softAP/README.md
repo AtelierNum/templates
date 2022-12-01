@@ -20,18 +20,13 @@ Use your Arduino IDE to upload the code to your board. Then check the console to
 
 ## How to modify ? 🔩 🔨
 
-These lines are where you can change the name and password of your **local** network
+These lines are where you can change the name of your **local** network
 
 ```cpp
 const char* ssid     = "basic_softAP_example";
-const char* password = "1234";
 ```
 
-This is what the ESP answer so you'll want to change that to embed the values you want to communicate.
-
-```cpp
-client.println("this is a fully textual body, it could be HTML or JSON");
-```
+The ESP will send you a webpage with a button when you query it. When the button is pressed the ESP will execute the `buttonPressed()` function.
 
 Don't worry about the IP. In this config, the ESP will always have the 192.168.4.1 address. [More Info](https://192-168-4-1.com/)
 
