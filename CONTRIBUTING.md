@@ -2,7 +2,7 @@
 
 ## What is a template?
 
-Templates answers the question "How do I do X (with Y)?". An example would be "How do I create a web browser addon?" or "How do display AR experiences with A-Frame?"
+Templates answers the question "How do I do X (with Y)?". An example would be "How do I create a web browser addon?" or "How do I display AR experiences with A-Frame?"
 
 The template should be working out of the box or require as few efforts as possible.
 
