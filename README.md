@@ -24,6 +24,7 @@ If you want to add your own template please see the [contribution guidelines](CO
 
 - [HTML/CSS/JS](HTML-CSS-JS)
 
+  - [Audio analysis in real-time using meyda](HTML-CSS-JS/audio_analysis_with_meyda/)
   - [Automatic scripts for the browser](HTML-CSS-JS/browser_script)
   - [Browser extension with icon](HTML-CSS-JS/browser_extension_with_icon)
   - [Browser extension with persistent memory](HTML-CSS-JS/browser_extension_with_persistent_variables)
