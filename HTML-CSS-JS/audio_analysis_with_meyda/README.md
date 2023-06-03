@@ -1,3 +1,7 @@
+---
+template: true
+---
+
 # Name of the file
 
 **Level** : ![](https://img.shields.io/badge/Level-Beginner-brightgreen)

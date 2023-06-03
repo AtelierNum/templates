@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><!-- readme title --></title>
+    <style>
+      body {
+        font-family: system-ui, sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-bottom: 10rem;
+      }
+
+      main {
+        max-width: 65ch;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        html {
+          background-color: #242424;
+          color: #e3e3e3;
+        }
+        a {
+          color: #209df0;
+        }
+      }
+    </style>
+    <script>
+      // we create a style tag containing the CSS specific to our component
+      // cloning content from a <template> tag is faster than using .innerHTML() on the main element
+      const style = document.createElement("template");
+      style.innerHTML = `
+        <style>
+          :host > a{
+            color:white;
+            background:#209df0;
+            font-size:1rem;
+            padding: 10px 16px;
+            line-height:1.2;
+            border-radius:4px;
+            border:3px solid transparent;
+            text-align:center;
+            text-decoration:none;
+            user-select:none;
+            display:inline-block;
+          }
+
+          :host > a:hover{
+            background: #2facff;
+          }
+        </style>
+      `;
+
+      const markup = document.createElement("template");
+      markup.innerHTML = `
+        <a href="<!-- zip url -->">
+          Download the template
+          <slot></slot>
+        </a>
+      `;
+
+      class GetZipButton extends HTMLElement {
+        constructor() {
+          super();
+          this.attachShadow({ mode: "open" });
+          this.shadowRoot.appendChild(markup.content.cloneNode(true));
+          this.shadowRoot.appendChild(style.content.cloneNode(true));
+        }
+      }
+
+      window.customElements.define("an-zip-downloader", GetZipButton);
+    </script>
+  </head>
+
+  <body>
+    <main>
+      <!-- readme content -->
+    </main>
+    <script>
+      const downloadBtn = document.createElement("an-zip-downloader");
+      const firstH1 = document.querySelector("h1");
+      if (firstH1) {
+        firstH1.insertAdjacentElement("afterend", downloadBtn);
+      } else {
+        document.body.insertAdjacentElement("afterbegin", downloadBtn);
+      }
+    </script>
+  </body>
+</html>

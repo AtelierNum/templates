@@ -1,3 +1,7 @@
+---
+template: true
+---
+
 # Get started with AR (and the universal rendering pipeline)
 
 **Level** : ![](https://img.shields.io/badge/Level-Beginner-brightgreen)

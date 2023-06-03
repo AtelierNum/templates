@@ -1,3 +1,7 @@
+---
+template: true
+---
+
 # Make and use custom Web elements
 
 **Level** : ![](https://img.shields.io/badge/Level-Beginner-brightgreen)

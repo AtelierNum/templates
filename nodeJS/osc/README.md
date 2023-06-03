@@ -1,3 +1,7 @@
+---
+template: true
+---
+
 # sending and receiving messages through OSC
 
 **Level** : ![](https://img.shields.io/badge/Level-Intermediate-yellow)

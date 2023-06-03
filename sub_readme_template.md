@@ -1,3 +1,12 @@
+---
+template: true
+_comment: everything is optionnal except the "template:true"
+description: change me
+language: fr en just keep one (will be "en" by default since most templates have their redmes in english)
+tags:
+  - item1
+---
+
 # Name of the file
 
 **Level** : ![](https://img.shields.io/badge/Level-Beginner-brightgreen) ![](https://img.shields.io/badge/Level-Intermediate-yellow) ![](https://img.shields.io/badge/Level-Advanced-red)
@@ -20,4 +29,4 @@
 
 ## Additional resources 📄 📗
 
-## How one could improve the template 🦾
+## How you could improve the template 🦾

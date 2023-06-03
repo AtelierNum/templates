@@ -1,3 +1,12 @@
+---
+template: true
+_comment: everything is optionnal except the "template:true"
+description: I am optionnal
+language: fr
+tags:
+  - Arduino
+---
+
 # Name of the file
 
 **Level** : ![](https://img.shields.io/badge/Level-Intermediate-yellow)

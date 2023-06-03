@@ -1,3 +1,7 @@
+---
+template: true
+---
+
 # Get started with AR
 
 **Level** : ![](https://img.shields.io/badge/Level-Beginner-brightgreen)

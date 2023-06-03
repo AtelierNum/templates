@@ -1,3 +1,7 @@
+---
+template: true
+---
+
 # Name of the file
 
 **Level** : ![](https://img.shields.io/badge/Level-Beginner-brightgreen)
@@ -23,10 +27,6 @@ Then you can use your Arduino IDE to upload the code to your board.
 ## How to modify ? 🔩 🔨
 
 Honestly the code is really simple, just look at it.
-
-## Be Careful ⚠️
-
-In this configuration both the ESP32 and the machine you'll connect on its network won't have access to the Internet.
 
 ## Additional resources 📄 📗
 

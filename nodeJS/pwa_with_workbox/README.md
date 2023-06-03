@@ -1,3 +1,7 @@
+---
+template: true
+---
+
 # pwa_workbox_template
 
 **Level** : ![](https://img.shields.io/badge/Level-Intermediate-yellow)
@@ -11,6 +15,7 @@ Progressive Web Apps are web apps that use emerging web browser APIs and feature
 This project is a PWA template using workbox V5 to build the Service Worker. [Workbox](https://developers.google.com/web/tools/workbox).
 
 the strategies used are:
+
 - Stale While Revalidate, [SWR](https://web.dev/offline-cookbook/#stale-while-revalidate).
 - Network only, [NO](https://web.dev/offline-cookbook/#network-only).
 

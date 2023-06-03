@@ -1,3 +1,7 @@
+---
+template: true
+---
+
 # Strobe
 
 **Level** : ![](https://img.shields.io/badge/Level-Intermediate-yellow)
@@ -31,6 +35,7 @@ This template should work on any board, but the faster the better. Putting this 
 - open the serial plotter and tweak `flashesPerSecond`, `boardDependentOffset`, and `deltaCompensation` to suit your needs.
 
 ## How one could improve the template 🦾
+
 - using FreeRTOS to see if having a task scheduler could improve the consistency.
 - using the second core of the ESP32 to offload **everything** that isn't related to the LEDs
 - ditch the ws2812B because we might just be limited by their communication protocole and their chip.

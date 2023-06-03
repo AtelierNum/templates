@@ -1,3 +1,13 @@
+---
+template: true
+_comment: everything is optionnal except the "template:true"
+description: change me
+thumbnail: "circuit.PNG"
+language: fr en just keep one (will be "en" by default since most templates have their redmes in english)
+tags:
+  - arduino
+---
+
 # Name of the file
 
 **Level** : ![](https://img.shields.io/badge/Level-Intermediate-yellow)

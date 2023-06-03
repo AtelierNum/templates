@@ -1,3 +1,7 @@
+---
+template: true
+---
+
 # Arduino <=> Page Web
 
 **Level** : ![](https://img.shields.io/badge/Level-Intermediate-yellow)
