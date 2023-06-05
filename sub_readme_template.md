@@ -1,10 +1,13 @@
 ---
 template: true
 _comment: everything is optionnal except the "template:true"
+title: change me
+thumbnail: some/local/folder/just/like/a/markdown/image/link
 description: change me
 language: fr en just keep one (will be "en" by default since most templates have their redmes in english)
 tags:
   - item1
+  - item2
 ---
 
 # Name of the file
