@@ -8,7 +8,7 @@
  *      .state.json
  */
 
-import fs from "fs/promises";
+import fs from "fs-extra";
 import { promisify } from "node:util";
 import { readFileSync, writeFileSync } from "fs";
 import {
