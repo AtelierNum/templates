@@ -266,7 +266,7 @@ async function renderReadme(readmePath, htmlPath) {
 
     return fs.copyFile(
       pathResolve(join(dirname(readmePath), up)),
-      pathResolve(join(htmlPath, up.split(URL_PATH_SEPARATOR).pop()))
+      pathResolve(join(htmlPath, up))
     );
   });
 
