@@ -143,7 +143,10 @@ async function generateMetadata(readmePath) {
   if (readmeFrontMatter.title) {
     metadata.title = readmeFrontMatter.title;
   } else {
-    const templateDirname = templatePath.split(pathSeparator).pop();
+    const templateDirname = templatePath
+      .split(pathSeparator)
+      .pop()
+      .replaceAll("_", " ");
     metadata.title = templateDirname;
   }
 
