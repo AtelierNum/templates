@@ -44,3 +44,9 @@ export default {
     analyzers["all"];
   },
 };
+
+// listen for any click/tap on the page to resume the WebAudio context
+// necessary on chromium
+document.addEventListener("click", () => {
+  audioContext.resume();
+});
