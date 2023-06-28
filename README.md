@@ -34,9 +34,10 @@ If you want to add your own template please see the [contribution guidelines](CO
 
 - [Node.js](nodeJS)
 
-  - [Video chat with WebRTC](nodeJS/webRTC)
+  - [MQTT broker and clients](nodeJS/mqtt)
   - [OSC messaging](nodeJS/osc)
   - [Pwa with workbox](nodeJS/pwa_with_workbox)
+  - [Video chat with WebRTC](nodeJS/webRTC)
 
 - [P5.js](p5JS)
 
