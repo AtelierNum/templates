@@ -1,5 +1,6 @@
 ---
 template: true
+thumbnail: "./images/thumbnail.png"
 ---
 
 # Wifi sniffer

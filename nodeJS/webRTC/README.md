@@ -1,5 +1,6 @@
 ---
 template: true
+thumbnail: "./thumbnail.png"
 ---
 
 # Name of the file

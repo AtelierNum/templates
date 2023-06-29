@@ -1,8 +1,7 @@
 ---
 template: true
-_comment: everything is optionnal except the "template:true"
-description: I am optionnal
-language: fr
+thumbnail: "./thumbnail.png"
+language: en
 tags:
   - Arduino
 ---

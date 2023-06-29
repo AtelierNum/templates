@@ -1,5 +1,6 @@
 ---
 template: true
+thumbnail: "./thubnail.png"
 ---
 
 # Arduino <=> Page Web

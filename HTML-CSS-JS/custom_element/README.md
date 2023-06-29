@@ -1,5 +1,6 @@
 ---
 template: true
+thumbnail: "./thumbnail.png"
 ---
 
 # Make and use custom Web elements

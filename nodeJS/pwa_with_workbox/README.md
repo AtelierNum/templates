@@ -1,5 +1,6 @@
 ---
 template: true
+thumbnail: "./thumbnail.png"
 ---
 
 # pwa_workbox_template

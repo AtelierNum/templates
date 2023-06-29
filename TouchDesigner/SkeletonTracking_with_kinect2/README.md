@@ -1,5 +1,6 @@
 ---
 template: true
+thumbnail: "./thumbnail.png"
 ---
 
 # Kinect2_skeleton.toe

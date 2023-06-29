@@ -1,7 +1,7 @@
 ---
 template: true
-_comment: everything is optionnal except the "template:true"
-thumbnail: "circuit.PNG"
+title: "read IDs from NFC and RFID tags"
+thumbnail: "./thumbnail.png"
 tags:
   - arduino
 ---
