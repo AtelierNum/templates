@@ -8,7 +8,7 @@
  *      .state.json
  */
 
-import fs from "fs-extra";
+import fs from "fs/promises";
 import { promisify } from "node:util";
 import { readFileSync, writeFileSync } from "fs";
 import {
@@ -96,37 +96,52 @@ async function traverse(path) {
 }
 
 async function zip(path) {
-  const currentFolderHash = (await hashElement(path)).hash;
+  try {
+    const currentFolderHash = (
+      await hashElement(path, { exclude: ["node_modules"] })
+    ).hash;
 
-  const statePath = fsPathToStatePath(path);
+    const statePath = fsPathToStatePath(path);
 
-  if (state[statePath] && state[statePath].hash == currentFolderHash) {
-    console.log("abort zipping due to lack of changes for " + path);
-    return;
-  } else {
+    if (state[statePath] && state[statePath].hash == currentFolderHash) {
+      console.log("abort zipping due to lack of changes for " + path);
+      return;
+    } else {
       state[statePath].hash = currentFolderHash;
       state[statePath].zipUrl = `${BUCKET_URL}/${statePath}.zip`;
+    }
+
+    await tryMkdir(join("dist", "zips", dirname(path)));
+
+    const templateName = basename(path);
+    let zip = new AdmZip();
+    // zip.addFile(templateName + "/"); // from the doc "Allows you to programmatically create a entry (file or directory) in the zip file."
+    await zip.addLocalFolderPromise(path, templateName + "/");
+    await zip.writeZipPromise(
+      join("dist", "zips", dirname(path), templateName + ".zip")
+    );
+
+    await execAsync(
+      `wrangler r2 object put ${BUCKET_NAME}/${statePath}.zip --file ${[
+        ".",
+        "dist",
+        "zips",
+        statePath,
+      ].join("/")}.zip`
+    );
+
+    console.log("successfully zipped " + path);
+  } catch (err) {
+    if (err.code == "EMFILE" && err.syscall == "open") {
+      console.warn("retrying " + path);
+      setTimeout(() => {
+        zip(path);
+      }, 1000);
+      return;
+    } else {
+      throw err;
+    }
   }
-
-  await tryMkdir(join("dist", "zips", dirname(path)));
-
-  const templateName = basename(path);
-  let zip = new AdmZip();
-  // zip.addFile(templateName + "/"); // from the doc "Allows you to programmatically create a entry (file or directory) in the zip file."
-  await zip.addLocalFolderPromise(path, templateName + "/");
-  await zip.writeZipPromise(
-    join("dist", "zips", dirname(path), templateName + ".zip")
-  );
-  await execAsync(
-    `wrangler r2 object put ${BUCKET_NAME}/${statePath}.zip --file ${[
-      ".",
-      "dist",
-      "zips",
-      statePath,
-    ].join("/")}.zip`
-  );
-
-  console.log("successfully zipped " + path);
 }
 
 async function generateMetadata(readmePath) {
