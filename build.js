@@ -104,11 +104,8 @@ async function zip(path) {
     console.log("abort zipping due to lack of changes for " + path);
     return;
   } else {
-    state[statePath] = {
-      ...state[statePath],
-      hash: currentFolderHash,
-      zipUrl: `${BUCKET_URL}/${statePath}.zip`,
-    };
+      state[statePath].hash = currentFolderHash;
+      state[statePath].zipUrl = `${BUCKET_URL}/${statePath}.zip`;
   }
 
   await tryMkdir(join("dist", "zips", dirname(path)));
