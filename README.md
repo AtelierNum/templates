@@ -18,6 +18,7 @@ If you want to add your own template please see the [contribution guidelines](CO
   - [Communication between an Arduino and a web page both on the same computer](Arduino/Arduino_WS_Webpage/)
   - [Identifying RFID tags with an RC522](Arduino/RC522/)
   - [ESP32 as bluetooth keyboard](Arduino/ESP32_BLE_Keyboard/)
+  - [ESP32 recording in a google sheet](Arduino/ESP32_google_sheet/)
   - [ESP32 serving HTTP requests without a router](Arduino/ESP32_softAP/)
   - [Consistent strobing of Neopixels](Arduino/strobe/)
   - [Wifi Sniffer](Arduino/Wifi_sniffer)
