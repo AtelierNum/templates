@@ -10,7 +10,7 @@
 
 import fs from "fs/promises";
 import { promisify } from "node:util";
-import { readFileSync, writeFileSync } from "fs";
+import { readFileSync, stat, writeFileSync } from "fs";
 import {
   join,
   sep as pathSeparator,
@@ -121,14 +121,14 @@ async function zip(path) {
       join("dist", "zips", dirname(path), templateName + ".zip")
     );
 
-    await execAsync(
-      `wrangler r2 object put ${BUCKET_NAME}/${statePath}.zip --file ${[
-        ".",
-        "dist",
-        "zips",
-        statePath,
-      ].join("/")}.zip`
-    );
+    // await execAsync(
+    //   `wrangler r2 object put ${BUCKET_NAME}/${statePath}.zip --file ${[
+    //     ".",
+    //     "dist",
+    //     "zips",
+    //     statePath,
+    //   ].join("/")}.zip`
+    // );
 
     console.log("successfully zipped " + path);
   } catch (err) {
@@ -290,7 +290,22 @@ async function renderReadme(readmePath, htmlPath) {
   const finalDocument = htmlBaseTemplate
     .replace("<!-- readme content -->", html)
     .replace("<!-- readme title -->", title)
-    .replace("<!-- zip url -->", state[statePath].zipUrl);
+    .replace("<!-- zip url -->", state[statePath].zipUrl)
+    .replace(
+      "<!-- open-graph-protocol metadata -->",
+      `
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="${state[statePath].url}" />
+        <meta property="og:title" content="Ateliernum | ${title}" />
+        <meta
+          property="og:description"
+          content="${
+            readmeFrontMatter.description ? readmeFrontMatter.description : ""
+          }"
+        />
+        <meta property="og:image" content="${state[statePath].thumbnail}" />
+    `
+    );
 
   await Promise.all([
     copyAllImagesPromises,
