@@ -29,16 +29,18 @@ This uses a "google apps script"(`.gs`) to create a HTTP endopoint (a "url") whi
 1. create a blank google sheet and open it
 2. go into `Extensions >  Apps Script`
 3. inside this template you will have a `googleAppsScriptEndpoint.gs` file, paste its content into the automatically generated `Code.gs`
-4. The inside the url of your google sheet you will find its id, for example  
-   https://docs.google.com/spreadsheets/d/**1p7Bo8z9aC3FG7HiytJiOzF2Nri0Efc9hn4c69zhF6XE**/edit#gid=0
-   Enter the ID of your google sheet into the `sheet_id` variable
-5. In the "Apps Script" editor, hit the "Deploy > New Deployment" button in the top right corner
-6. Select the type "Web app"
-7. in "who has access" select "Anyone"
-8. copy the "deployment ID" and put it in the ESP32 code, the variable is called `GOOGLE_DEPLOYEMENT_ID`
-9. Enter the proper credential for your router inside the `ssid` and `password` variables
-10. Upload the code on your ESP32
-11. 🎉🎉🎉
+4. Inside the url of your google sheet you will find its id, for example  
+   `1p7Bo8z9aC3FG7HiytJiOzF2Nri0Efc9hn4c69zhF6XE` is the ID inside of
+   `https://docs.google.com/spreadsheets/d/1p7Bo8z9aC3FG7HiytJiOzF2Nri0Efc9hn4c69zhF6XE/edit#gid=0`
+
+5. Enter that ID of your google sheet into the `sheet_id` variable
+6. In the "Apps Script" editor, hit the "Deploy > New Deployment" button in the top right corner
+7. Select the type "Web app"
+8. in "who has access" select "Anyone"
+9. copy the "deployment ID" and put it in the ESP32 code, the variable is called `GOOGLE_DEPLOYEMENT_ID`
+10. Enter the proper credential for your router inside the `ssid` and `password` variables
+11. Upload the code on your ESP32
+12. 🎉🎉🎉
 
 ## How to modify ? 🔩 🔨
 
@@ -54,7 +56,7 @@ This is still not perfect because the url of your endpoint and the token are bot
 
 ## Be Careful ⚠️
 
-If you change stuff in the `.gs` you will need to re-deploy it to apply the changes to your endpoint. This will change the deployement ID and you'll have to paste the new one into your ESP32 code and re-upload it onto your board.
+If you change stuff in the `.gs` you will need to re-deploy it to apply the changes to your endpoint. This will change the deployement ID and you'll have to paste the new deployment ID into your ESP32 code and then re-upload it onto your board.
 
 ## Additional resources 📄 📗
 
