@@ -10,7 +10,7 @@ language: en
 
 **Level** : ![](https://img.shields.io/badge/Level-Intermediate-yellow)
 
-![an infinite canvas with 2 floating interfaces](./readme_resources/hero.jpg);
+![an infinite canvas with 2 floating interfaces](./readme_resources/hero.jpg)
 
 ## What does it do ? ✨
 
