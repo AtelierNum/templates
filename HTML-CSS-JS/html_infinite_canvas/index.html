@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en" class="no-native-mobile-scroll">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        margin: 0;
+        user-select: none;
+        touch-action: none;
+        font-family: system-ui, sans-serif;
+      }
+
+      .no-native-mobile-scroll {
+        overflow: hidden;
+      }
+
+      .pattern-background {
+        --s: 100px; /* control the size */
+
+        --_g: #0000 90deg, #00000033 0;
+        background: conic-gradient(from 90deg at 1px 2px, var(--_g)),
+          conic-gradient(from 90deg at 1px 1px, var(--_g));
+        background-size: var(--s) var(--s),
+          calc(var(--s) / 5) calc(var(--s) / 5);
+      }
+
+      #root {
+        transform: translate(-50%, -50%);
+        display: block;
+      }
+
+      #container {
+        width: 0;
+        height: 0;
+      }
+
+      #container > * {
+        position: absolute;
+      }
+
+      #container > * {
+        border: 1px solid black;
+        background-color: white;
+        border-radius: 0.25rem;
+      }
+
+      #example,
+      #other-example {
+        width: fit-content;
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        transform: translate(-218px, -347px);
+      }
+      #other-example {
+        transform: translate(99px, 66px);
+      }
+
+      #example ul,
+      #other-example ul {
+        padding: 0;
+        list-style-type: none;
+      }
+    </style>
+  </head>
+  <body class="pattern-background">
+    <div id="container">
+      <div id="root" data-fixed>+</div>
+      <!-- <div data-fixed>I AM NOT DRAGGABLE</div> -->
+
+      <!-- it would make sense for this to be a custom component -->
+      <!-- that would enoble us to make a visual scripting lang, decoupled -->
+      <div id="example">
+        <h2>My node</h2>
+        <ul>
+          <input type="range" form="0" to="10" name="" id="" />
+          <li>value 1</li>
+          <li>value 2</li>
+          <li>value 3</li>
+          <li>value 4</li>
+        </ul>
+        <button>save</button>
+        <button>clear</button>
+      </div>
+      <div id="other-example">
+        <h2>My other node</h2>
+        <ul>
+          <input type="range" form="0" to="10" name="" id="" />
+          <li>value 1</li>
+          <li>value 2</li>
+          <li>value 3</li>
+          <li>value 4</li>
+        </ul>
+        <button>save</button>
+        <button>clear</button>
+      </div>
+    </div>
+    <script type="module">
+      import {
+        getTranslateValues,
+        getBackgroundPositionValues,
+      } from "./libs/util.js";
+
+      const LEFT_CLICK = 0;
+      const MOUSE_WHEEL = 1;
+
+      const container = document.querySelector("#container");
+      const draggables = document.querySelectorAll(
+        "#container>*:not([data-fixed])"
+      );
+      const interactives = document.querySelectorAll(
+        `#container>*:not([data-fixed]) input,
+        #container>*:not([data-fixed]) button,
+        #container>*:not([data-fixed]) a`
+      );
+
+      let drag = {
+        heldElement: null,
+        lastPointerPosition: {
+          x: 0,
+          y: 0,
+        },
+      };
+
+      container.style.transform = `translate(${window.innerWidth * 0.5}px, ${
+        window.innerHeight * 0.5
+      }px)`;
+      document.querySelector("body").style.backgroundPosition = `left ${
+        window.innerWidth * 0.5
+      }px top ${window.innerHeight * 0.5}px`;
+
+      draggables.forEach((el) => {
+        el.addEventListener("pointerdown", (ev) => {
+          startDrag(el, { x: ev.x, y: ev.y });
+        });
+      });
+
+      interactives.forEach((i) => {
+        i.addEventListener("pointerdown", (ev) => ev.stopPropagation());
+      });
+
+      document.addEventListener("pointerup", cancelDrag);
+
+      function cancelDrag(event) {
+        drag.heldElement = null;
+      }
+
+      document.addEventListener("pointermove", (ev) => {
+        if (drag.heldElement) {
+          const position = getTranslateValues(drag.heldElement);
+
+          // NOTE : yeah, I know ev.movementX and Y are supposed to be the delta between two move events
+          // but it breaks down when the page is lagging, whereas the code below doesn't.
+          // maybe it's async in some browser, in the same way the scroll events are?
+          const deltaX = ev.x - drag.lastPointerPosition.x;
+          const deltaY = ev.y - drag.lastPointerPosition.y;
+          drag.lastPointerPosition.x = ev.x;
+          drag.lastPointerPosition.y = ev.y;
+
+          drag.heldElement.style.transform = `translate(${
+            position.x + deltaX
+          }px,${position.y + deltaY}px)`;
+
+          if (drag.heldElement == container) {
+            const backgroundPosition = getBackgroundPositionValues(
+              document.querySelector("body")
+            );
+            document.querySelector("body").style.backgroundPosition = `left ${
+              backgroundPosition.x + deltaX
+            }px top ${backgroundPosition.y + deltaY}px`;
+          }
+        }
+      });
+
+      document.addEventListener("mousedown", (ev) => {
+        if (ev.button == MOUSE_WHEEL) {
+          ev.preventDefault();
+          startDrag(container, { x: ev.x, y: ev.y });
+        }
+      });
+      document.addEventListener("touchstart", (ev) => {
+        if (ev.which == 0 && ev.target == document.querySelector("html")) {
+          startDrag(container, {
+            x: ev.touches[0].pageX,
+            y: ev.touches[0].pageY,
+          });
+        }
+      });
+
+      function startDrag(element, initialPointerPosition) {
+        drag.heldElement = element;
+        drag.lastPointerPosition.x = initialPointerPosition.x;
+        drag.lastPointerPosition.y = initialPointerPosition.y;
+      }
+    </script>
+  </body>
+</html>

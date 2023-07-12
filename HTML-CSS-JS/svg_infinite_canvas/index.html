@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        user-select: none;
+      }
+
+      body {
+        margin: 0;
+      }
+
+      svg {
+        position: absolute;
+        width: 100vw;
+        height: 100vh;
+        background-color: cornflowerblue;
+      }
+
+      /* https://developer.mozilla.org/en-US/docs/Web/SVG/Element/foreignObject */
+    </style>
+  </head>
+  <body>
+    <svg x="0px" y="0px" viewBox="0 0 0 0">
+      <rect x="10" y="5" fill="white" stroke="black" width="90" height="90" />
+      <circle fill="white" stroke="black" cx="170" cy="50" r="45" />
+      <polygon
+        fill="white"
+        stroke="black"
+        points="279,5 294,35 328,40 303,62
+309,94 279,79 248,94 254,62 230,39 263,35"
+      />
+      <line fill="none" stroke="black" x1="410" y1="95" x2="440" y2="6" />
+      <line fill="none" stroke="black" x1="360" y1="6" x2="360" y2="95" />
+      <foreignObject
+        x="20"
+        y="200"
+        width="160"
+        height="160"
+        transform="translate(100,0)"
+      >
+        <div>hello I am html in SVG</div>
+      </foreignObject>
+    </svg>
+
+    <script>
+      const svgCTX = document.querySelector("svg");
+
+      svgCTX.viewBox.baseVal.width = svgCTX.clientWidth;
+      svgCTX.viewBox.baseVal.height = svgCTX.clientHeight;
+
+      let draggedElement = null;
+
+      let dnd = {
+        active: false,
+        x: 0,
+        y: 0,
+      };
+
+      svgCTX.addEventListener("mousedown", (ev) => {
+        dnd.active = true;
+        dnd.x = ev.clientX;
+        dnd.y = ev.clientY;
+      });
+
+      // svgCTX.addEventListener("mouseleave", stopDnD);
+      svgCTX.addEventListener("mouseup", stopDnD);
+
+      function stopDnD() {
+        dnd.active = false;
+      }
+
+      // svgCTX.addEventListener("mousemove", (ev) => {
+      //   if (dnd.active) {
+      //     const deltaX = ev.clientX - dnd.x;
+      //     const deltaY = ev.clientY - dnd.y;
+
+      //     dnd.x = ev.clientX;
+      //     dnd.y = ev.clientY;
+
+      //     svgCTX.viewBox.baseVal.x -=
+      //       deltaX * (svgCTX.viewBox.baseVal.width / svgCTX.clientWidth);
+      //     svgCTX.viewBox.baseVal.y -=
+      //       deltaY * (svgCTX.viewBox.baseVal.height / svgCTX.clientHeight);
+      //   }
+      // });
+
+      svgCTX.addEventListener("wheel", (ev) => {
+        console.log(
+          svgCTX.clientWidth,
+          svgCTX.viewBox.baseVal.width,
+          svgCTX.clientWidth / svgCTX.viewBox.baseVal.width
+        );
+
+        const viewBox = svgCTX.viewBox.baseVal;
+
+        const zoomFactor = 1.1;
+
+        if (ev.deltaY < 0) {
+          viewBox.x += (viewBox.width - viewBox.width / zoomFactor) / 2;
+          viewBox.y += (viewBox.height - viewBox.height / zoomFactor) / 2;
+          viewBox.width = viewBox.width / zoomFactor;
+          viewBox.height = viewBox.height / zoomFactor;
+        } else if (ev.deltaY > 0) {
+          viewBox.x -= (viewBox.width * zoomFactor - viewBox.width) / 2;
+          viewBox.y -= (viewBox.height * zoomFactor - viewBox.height) / 2;
+          viewBox.width = viewBox.width * zoomFactor;
+          viewBox.height = viewBox.height * zoomFactor;
+        }
+      });
+
+      document.querySelectorAll("svg > *").forEach((el) => {
+        el.addEventListener("mousedown", (ev) => {
+          draggedElement = el;
+        });
+      });
+
+      document.addEventListener("mouseup", (ev) => {
+        draggedElement = null;
+      });
+
+      document.addEventListener("mousemove", (ev) => {
+        if (draggedElement) {
+          const coords = getSVGTransform(draggedElement);
+
+          if (draggedElement.transform.baseVal.numberOfItems == 0) {
+            const transform = svgCTX.createSVGTransform();
+            transform.setTranslate(0, 0);
+            draggedElement.transform.baseVal.initialize(transform);
+          }
+
+          draggedElement.transform.baseVal
+            .getItem(0)
+            .setTranslate(coords.x + ev.movementX, coords.y + ev.movementY);
+        } else {
+        }
+      });
+
+      function getSVGTransform(element) {
+        let xforms = element.transform.baseVal; // An SVGTransformList
+
+        if (xforms.numberOfItems == 0) {
+          return { x: 0, y: 0 };
+        }
+
+        let firstXForm = xforms.getItem(0); // An SVGTransform
+        if (firstXForm.type != SVGTransform.SVG_TRANSFORM_TRANSLATE) {
+          //FIXME
+          throw "we're not handling the presence of translateless transform";
+        } else {
+          let firstX = firstXForm.matrix.e;
+          let firstY = firstXForm.matrix.f;
+          return { x: firstX, y: firstY };
+        }
+      }
+    </script>
+  </body>
+</html>
