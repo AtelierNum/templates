@@ -1,0 +1,51 @@
+<!-- TODOs
+  - auto recalls
+  - find and give a static IP to a computer which doesn't suck
+  - non hardcoded discoverable ids 
+    - "It's not recommended that you use this ID to identify peers, as it's meant to be used for brokering connections only. You're recommended to set the metadata option to send other identifying information."
+  - being able to yank the screen control from someone else (it's not a bug, it's a feature)
+
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sender</title>
+    <script src="peerjs.1.4.7.min.js"></script>
+  </head>
+  <body>
+    <button id="call">call</button>
+
+    <script>
+      let peer = new Peer("sender", {
+        host: "localhost",
+        port: "9000",
+      });
+
+      peer.on("open", function (id) {
+        console.log("My peer ID is: " + id);
+      });
+
+      document.querySelector("#call").addEventListener("click", async () => {
+        let conn = peer.connect("receiver");
+
+        conn.on("open", function () {
+          conn.on("data", function (data) {
+            console.log("Received", data);
+          });
+
+          conn.send("Hello!");
+        });
+
+        let screenStream = await navigator.mediaDevices.getDisplayMedia({
+          video: true,
+          audio: true,
+        });
+
+        let call = peer.call("receiver", screenStream);
+      });
+    </script>
+  </body>
+</html>

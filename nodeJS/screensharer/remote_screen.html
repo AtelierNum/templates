@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Remote screen</title>
+    <script src="peerjs.1.4.7.min.js"></script>
+    <style>
+      body {
+        margin: 0;
+      }
+
+      #video-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        height: 100vh;
+        max-height: 100vh;
+
+        background-color: black;
+      }
+
+      video {
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="video-container">
+      <video id="screen" autoplay></video>
+    </div>
+
+    <script>
+      let peer = new Peer("receiver", {
+        host: "localhost",
+        port: "9000",
+      });
+
+      peer.on("open", function (id) {
+        console.log("My peer ID is: " + id);
+      });
+
+      peer.on("connection", function (conn) {
+        console.log(conn);
+
+        conn.on("open", function () {
+          // Receive messages
+          conn.on("data", function (data) {
+            console.log("Received", data);
+          });
+
+          // Send messages
+          conn.send("Hello!");
+        });
+      });
+
+      peer.on("call", async function (call) {
+        console.log(call);
+
+        call.on("stream", function (stream) {
+          // `stream` is the MediaStream of the remote peer.
+          // Here you'd add it to an HTML video/canvas element.
+          document.querySelector("#screen").srcObject = stream;
+        });
+
+        call.answer();
+      });
+    </script>
+  </body>
+</html>
