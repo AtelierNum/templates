@@ -121,14 +121,14 @@ async function zip(path) {
       join("dist", "zips", dirname(path), templateName + ".zip")
     );
 
-    // await execAsync(
-    //   `wrangler r2 object put ${BUCKET_NAME}/${statePath}.zip --file ${[
-    //     ".",
-    //     "dist",
-    //     "zips",
-    //     statePath,
-    //   ].join("/")}.zip`
-    // );
+    await execAsync(
+      `wrangler r2 object put ${BUCKET_NAME}/${statePath}.zip --file ${[
+        ".",
+        "dist",
+        "zips",
+        statePath,
+      ].join("/")}.zip`
+    );
 
     console.log("successfully zipped " + path);
   } catch (err) {

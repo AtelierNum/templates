@@ -6,8 +6,7 @@
 
 All of our starter projects in one place for easy browsing. Each should come with its own readme.
 
-To get the templates easily you can install our custom downloader here : https://ateliernum.github.io/fido/
-More info about it here : https://github.com/AtelierNum/fido
+To get the templates easily you can download them from our website : https://ateliernum.github.io/
 
 If you want to add your own template please see the [contribution guidelines](CONTRIBUTING.md).
 
@@ -38,6 +37,7 @@ If you want to add your own template please see the [contribution guidelines](CO
   - [MQTT broker and clients](nodeJS/mqtt)
   - [OSC messaging](nodeJS/osc)
   - [Pwa with workbox](nodeJS/pwa_with_workbox)
+  - [Genarting web pages from templates](nodeJS/templating/)
   - [Video chat with WebRTC](nodeJS/webRTC)
 
 - [P5.js](p5JS)

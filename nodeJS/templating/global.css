@@ -1,0 +1,19 @@
+body {
+  width: 100%;
+  margin: 0;
+
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  font-family: system-ui, sans-serif;
+}
+
+main {
+  width: fit-content;
+  max-width: 70ch;
+
+  padding-bottom: 5rem;
+}
