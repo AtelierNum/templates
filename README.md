@@ -38,6 +38,7 @@ If you want to add your own template please see the [contribution guidelines](CO
   - [OSC messaging](nodeJS/osc)
   - [Pwa with workbox](nodeJS/pwa_with_workbox)
   - [Genarting web pages from templates](nodeJS/templating/)
+  - [UPD listener / echo server](nodeJS/udp_listener/)
   - [Video chat with WebRTC](nodeJS/webRTC)
 
 - [P5.js](p5JS)
