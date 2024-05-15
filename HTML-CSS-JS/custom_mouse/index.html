@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        cursor: none; /*hide the native cursor*/
+      }
+
+      body {
+        min-height: 100vh; /*if we hover the void we can't apply the "cursor:none" rule, so make the body atleast as tall as the viewport*/
+        margin: 0; /*remove the default margin of the body so 100vh doesn't mean spilling out*/
+      }
+
+      #cursor {
+        position: absolute; /*we want to place it ourselves, not let the browser place it*/
+        top: -83px; /* we're placing it 83p pixels above and 43 pixels to the left of the screen...*/
+        left: -43px; /* ...because the finger in our image is not in the top left corner*/
+
+        pointer-events: none; /*we must be able to click through it, otherwise we won't be able to clic anything else*/
+      }
+    </style>
+  </head>
+  <body>
+    <button>click me</button>
+    
+    <!-- this html element will follow the mouse cursor -->
+    <div id="cursor"><img src="cursor.png" /></div>
+
+
+    <script>
+      const cursor = document.querySelector("#cursor");
+
+      // when we move the mouse, use the information about the event to translate our cursor image to the position of the mouse
+      document.documentElement.addEventListener("mousemove", (ev) => {
+        cursor.style.transform = `translate(${ev.pageX}px, ${ev.pageY}px)`;
+      });
+
+      // when the mouse leaves the whole document make the cursor image fully invisible
+      document.documentElement.addEventListener("mouseleave", () => {
+        cursor.style.opacity = 0;
+      });
+      // when the mouse enters the whole document make the cursor image visible
+      document.documentElement.addEventListener("mouseenter", () => {
+        cursor.style.opacity = 1;
+      });
+    </script>
+  </body>
+</html>

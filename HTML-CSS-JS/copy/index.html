@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    #validation {
+      opacity: 0;
+    }
+  </style>
+  <body>
+    <p>
+      test@test.com
+      <button id="copy">copy</button>
+      <span id="validation">✅</span>
+    </p>
+
+    <script>
+      // you don't have to understand the async/await keywords to use this example
+
+      const copyBtn = document.querySelector("#copy");
+      const validationEl = document.querySelector("#validation");
+
+      // when I click on my button
+      copyBtn.addEventListener("click", async () => {
+        // I put "test@test.com" into the clipboard of the user, as if they copied it
+        await navigator.clipboard.writeText("test@test.com");
+
+        // then I make the validation checkmark visible
+        validationEl.style.opacity = 1;
+
+        // and I start a timer which is going to make the validation marker invisible in 600ms
+        setTimeout(() => (validationEl.style.opacity = 0), 600);
+      });
+    </script>
+  </body>
+</html>

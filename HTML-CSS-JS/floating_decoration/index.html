@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .decorated {
+        position: relative;
+        color: red;
+      }
+
+      /*something positionned absolutely is positionned according to its closest "position:relative" parent*/
+      .decoration {
+        position: absolute;
+        top: 1.5rem; /*some offset to adjust things*/
+        left: 3ch; /*some offset to adjust things*/
+        
+        pointer-events: none; /*this is here so we can't click or drag the decoration*/
+        user-select: none; /*this is here so we can't highlight the decoration*/
+      }
+    </style>
+  </head>
+  <body>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque lectus
+      nisl, ultrices eget feugiat in, feugiat et urna. Nunc eu sapien
+      scelerisque, euismod velit vitae, condimentum libero. Nunc sed odio
+      egestas, cursus ipsum ut, lobortis dolor. Vestibulum congue faucibus
+      dictum. Ut commodo est quis
+      <span class="decorated"
+        >egestas<span class="decoration"><img src="deco.png" /></span
+      ></span>
+      porttitor. Nullam commodo nisi mi, non porta velit imperdiet at. Nam
+      tincidunt, mauris quis posuere hendrerit, lorem purus condimentum lacus,
+      vel viverra dolor erat eget turpis. Vestibulum quis ultrices purus, et
+      fringilla tellus. Integer in magna dignissim, placerat risus ac, elementum
+      mi.
+    </p>
+    <div class="decorated">
+      marche aussi avec des blocs
+      <div class="decoration"><img src="deco.png" /></div>
+    </div>
+  </body>
+</html>

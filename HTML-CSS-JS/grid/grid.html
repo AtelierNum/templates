@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        min-height: 100vh;
+        margin: 0;
+
+        display: grid;/* you can't use grid-based features if it's not a grid */ 
+        
+        /* this is my favorite way of writing a grid */
+        /* it is not based on the concept of typographic grid */
+        /* you just specify the names of your spaces */
+        /* you then attribute these spaces later with th grid-area property */
+        grid:   "header header  header  aside" 1fr /* you just have to write the name of each box in your row and then the height of the row */
+                "main   main    main    aside" 1fr /* an fr unit is just "a proportionnal piece of the available space" */
+                "main   main    main    aside" 1fr /* so because there is 5 rows and they are all 1fr then they are all one fifth of the overall grid height */
+                "main   main    main    aside" 1fr
+                "footer footer  footer  aside" 1fr
+                /1fr    1fr     1fr     1fr; /*see the slash(/) at the beginning? It marks the start of the columns widths*/
+
+      /* below is the same grid except it's more compact */
+      grid:   "header header  header  aside" 1fr 
+                "main   main    main    aside" 3fr /* this one was repeated 3 times so we could just give it 3fr, taking 3/5 of the grid's height  */
+                "footer footer  footer  aside" 1fr
+                /1fr    1fr     1fr     1fr; 
+
+      /* you can use ohter units if you want like px, em, rem, ch, they will just have a fixed size and the fr-based spaces are going to share what's left*/
+
+        align-items: center;
+        justify-items: center;
+      }
+
+      header {
+        grid-area: header;
+        height: 100%;
+        width: 100%;
+        background-color: aquamarine;
+      }
+
+      main {
+        grid-area: main;
+        height: 100%;
+        width: 100%;
+        background-color: brown;
+      }
+
+      footer {
+        grid-area: footer;
+        height: 100%;
+        width: 100%;
+        background-color: chartreuse;
+      }
+    </style>
+  </head>
+  <body>
+    <header>header</header>
+    <main>main</main>
+    <aside>aside</aside>
+    <footer>footer</footer>
+  </body>
+</html>
