@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        font-family: system-ui, sans-serif !important;
+        font-weight: normal;
+      }
+
+      /* the styling of the dialog's veil */
+      ::backdrop {
+        background-color: black;
+        opacity: 0.5;
+      }
+    </style>
+  </head>
+  <dialog>
+    <h2>What is your name?</h2>
+    <input id="username" type="text" placeholder="username" />
+    <button id="login">Connect</button>
+  </dialog>
+
+  <h2 id="usernameDisplay"></h2>
+
+  <button id="left">left</button>
+  <button id="right">left</button>
+  <button id="jump">jump</button>
+  <button id="fire">fire</button>
+
+  <body>
+    <script>
+      const modal = document.querySelector("dialog");
+      const usernameEl = document.querySelector("#username");
+      const loginBtn = document.querySelector("#login");
+      const leftBtn = document.querySelector("#left");
+      const rightBtn = document.querySelector("#right");
+      const jumpBtn = document.querySelector("#jump");
+      const fireBtn = document.querySelector("#fire");
+
+      document.addEventListener("DOMContentLoaded", () => {
+        modal.showModal();
+      });
+
+      loginBtn.addEventListener("pointerup", () => {
+        connect();
+        modal.close();
+        document.querySelector("#usernameDisplay").innerText = usernameEl.value;
+      });
+
+      function connect() {
+        // you might need to change the address
+        const ws = new WebSocket("ws://127.0.0.1:8080");
+
+        ws.addEventListener("open", (ev) => {
+          console.log("connected");
+
+          // pointerdown = touchdown + mousedown
+          jumpBtn.addEventListener("pointerdown", (ev) => {
+            ws.send(usernameEl.value + ",jump");
+          });
+
+          fireBtn.addEventListener("pointerup", (ev) => {
+            ws.send(usernameEl.value + ",fire");
+          });
+
+          leftBtn.addEventListener("pointerdown", (ev) => {
+            ws.send(usernameEl.value + ",moveX,-1.0");
+          });
+          leftBtn.addEventListener("pointerup", (ev) => {
+            ws.send(usernameEl.value + ",moveX,0.0");
+          });
+
+          rightBtn.addEventListener("pointerdown", (ev) => {
+            ws.send(usernameEl.value + ",moveX,1.0");
+          });
+          rightBtn.addEventListener("pointerup", (ev) => {
+            ws.send(usernameEl.value + ",moveX,0.0");
+          });
+        });
+
+        ws.addEventListener("close", (ev) => {
+          console.warn("connection closed");
+          connect(); // try to reconnect
+        });
+
+        ws.addEventListener("message", (ev) => {
+          console.log("incoming message: " + ev.data);
+        });
+      }
+    </script>
+  </body>
+</html>
