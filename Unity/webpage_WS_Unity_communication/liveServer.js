@@ -9,7 +9,7 @@ liveServer.start({
   port: 80,
   host: "0.0.0.0",
   root: "webclient",
-  open: true, // change it to folse if you don't want to open the browser on launch
+  open: false,
 });
 
 // print the local IPs as qr codes
@@ -32,9 +32,14 @@ for (const name of Object.keys(nets)) {
 
 Object.entries(results).forEach(async ([k, v]) => {
   if (!k.includes("vEthernet")) {
+    console.log("http://" + v[0]);
     console.log(`
     ${k}
-    ${v[0]}
+
+    ip: ${v[0]}
+
+    http (crtl+click): http://${v[0]}
+
     ${await QRCode.toString("http://" + v[0], {
       type: "terminal",
       errorCorrectionLevel: "H",
