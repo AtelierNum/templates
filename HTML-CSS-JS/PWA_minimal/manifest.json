@@ -1,0 +1,19 @@
+{
+  "name": "My PWA",
+  "display": "standalone",
+  "start_url": "example.com",
+  "icons": [
+    {
+      "src": "assets/icons/app_192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "assets/icons/app_512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "_comment": "prefer_related_applications has to be false for installability through chromium browsers",
+  "prefer_related_applications": false
+}
