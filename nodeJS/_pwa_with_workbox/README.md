@@ -1,5 +1,5 @@
 ---
-template: true
+template: false
 thumbnail: "./thumbnail.png"
 ---
 

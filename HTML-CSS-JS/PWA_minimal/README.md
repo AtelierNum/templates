@@ -1,7 +1,7 @@
 ---
 template: true
 title: Minimal PWA
-thumbnail: readme-resources/og_thumbnail.jpg
+thumbnail: readme_resources/og_thumbnail.jpg
 description: 0 dependencies PWA setup
 language: en
 tags:
@@ -14,7 +14,7 @@ tags:
 
 **Level** : ![](https://img.shields.io/badge/Level-Beginner-brightgreen)
 
-![](readme_resources/opg_thumbnail.jpg)
+![](readme_resources/og_thumbnail.jpg)
 
 ## What does it do ? ✨
 
