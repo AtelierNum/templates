@@ -10,6 +10,13 @@ void setup() {
 }
 
 void loop() {
-  bleKeyboard.print("A");
+  if (!bleKeyboard.isConnected()) {
+    Serial.println("not connected");
+    delay(5000);
+    return;
+  }
+
+  bleKeyboard.press('a');
+  bleKeyboard.release('a');
   delay(5000);
 }
