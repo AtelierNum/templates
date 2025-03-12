@@ -31,13 +31,15 @@ None, all the libs are provided with the arduion IDE
 
 As usual, upload it to the card
 
+![](circuit.jpg)
+
 ## How to modify ? 🔩 🔨
 
 Just replace the `millis()` with your own data.
 
 ## Be Careful ⚠️
 
-- Not ejecting your file might lead to its [bricking](<https://en.wikipedia.org/wiki/Brick_(electronics)>)
+- Not closing your file might lead to the [bricking](<https://en.wikipedia.org/wiki/Brick_(electronics)>) of your SD card.
 - If you're trying to write fast, you should `file.flush` once in a while to make sure the write stream doesn't get saturated.
 
 ## Additional resources 📄 📗
