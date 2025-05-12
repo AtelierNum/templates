@@ -52,7 +52,7 @@
 
       function connect() {
         // you might need to change the address
-        const ws = new WebSocket("ws://127.0.0.1:8080");
+        const ws = new WebSocket(`ws://${location.hostname}:8080`);
 
         ws.addEventListener("open", (ev) => {
           console.log("connected");
@@ -86,8 +86,13 @@
           connect(); // try to reconnect
         });
 
-        ws.addEventListener("message", (ev) => {
-          console.log("incoming message: " + ev.data);
+        ws.addEventListener("message", async (ev) => {
+          const [player, action, ...values] = (await ev.data.text()).split(",");
+
+          console.log("-----");
+          console.log(player);
+          console.log(action);
+          console.log(values);
         });
       }
     </script>
