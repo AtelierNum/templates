@@ -1,12 +1,12 @@
 ---
 template: true
-title: I2C -> serial sidecar
+title: I2C-serial sidecar
 description: Print in the serial monitor through a second arduino via I2C
 language: en
 tags:
   - UART
   - Serial
-	- i2c
+  - i2c
 ---
 
 # Serial sidecar
@@ -45,6 +45,8 @@ void setup(){
 ```
 
 Which then allows you to use `sideCarPrint(String str)` and `sideCarPrintln(String str)`;
+
+![wiring.jpg](wiring.jpg)
 
 ## How to modify ? 🔩 🔨
 
