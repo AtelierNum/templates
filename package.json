@@ -9,7 +9,9 @@
     "build": "node build.js",
     "init": "wrangler pages project create ateliernum-templates --production-branch main && wrangler r2 bucket create ateliernum-templates",
     "deploy": "npm run build && wrangler pages deploy ./dist/pages --project-name ateliernum-templates",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "logout": "wrangler logout",
+    "login": "wrangler login"
   },
   "repository": {
     "type": "git",
@@ -29,6 +31,6 @@
     "marked": "^5.1.2",
     "node-fetch": "^3.3.2",
     "rimraf": "^5.0.7",
-    "wrangler": "^3.56.0"
+    "wrangler": "^4.92.0"
   }
 }
