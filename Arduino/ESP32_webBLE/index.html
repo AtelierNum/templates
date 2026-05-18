@@ -1,0 +1,112 @@
+<!doctype html>
+<html>
+  <head>
+    <title>ESP32 WebBLE Control</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        text-align: center;
+        padding: 50px;
+        background: #f4f4f9;
+      }
+      button {
+        padding: 15px 25px;
+        font-size: 18px;
+        cursor: pointer;
+        border-radius: 8px;
+        border: none;
+        margin: 10px;
+        transition: 0.3s;
+      }
+      .connect {
+        background: #007bff;
+        color: white;
+      }
+      .on {
+        background: #28a745;
+        color: white;
+      }
+      .off {
+        background: #dc3545;
+        color: white;
+      }
+      button:disabled {
+        background: #ccc;
+        cursor: not-allowed;
+      }
+      #status {
+        margin-top: 20px;
+        font-weight: bold;
+        color: #555;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>ESP32 WebBLE Trigger</h1>
+
+    <button id="connectBtn" class="connect">1. Connect to ESP32</button>
+    <br />
+    <button id="onBtn" class="on" disabled>Trigger: ON</button>
+    <button id="offBtn" class="off" disabled>Trigger: OFF</button>
+
+    <div id="status">Status: Disconnected</div>
+
+    <script>
+      // Use the same UUIDs as the ESP32 code
+      const SERVICE_UUID = "4fafc201-1fb5-459e-8fcc-c5c9c331914b";
+      const CHARACTERISTIC_UUID = "beb5483e-36e1-4688-b7f5-ea07361b26a8";
+
+      let device, server, service, characteristic;
+
+      const connectBtn = document.getElementById("connectBtn");
+      const onBtn = document.getElementById("onBtn");
+      const offBtn = document.getElementById("offBtn");
+      const statusMsg = document.getElementById("status");
+
+      connectBtn.addEventListener("click", async () => {
+        try {
+          statusMsg.innerText = "Scanning...";
+          device = await navigator.bluetooth.requestDevice({
+            filters: [{ name: "ESP32_BLE_Trigger" }],
+            optionalServices: [SERVICE_UUID],
+          });
+
+          statusMsg.innerText = "Connecting to GATT Server...";
+          server = await device.gatt.connect();
+
+          statusMsg.innerText = "Getting Service...";
+          service = await server.getPrimaryService(SERVICE_UUID);
+
+          statusMsg.innerText = "Getting Characteristic...";
+          characteristic = await service.getCharacteristic(CHARACTERISTIC_UUID);
+
+          statusMsg.innerText = "Connected!";
+          onBtn.disabled = false;
+          offBtn.disabled = false;
+          connectBtn.disabled = true;
+
+          device.addEventListener("gattserverdisconnected", () => {
+            statusMsg.innerText = "Disconnected";
+            onBtn.disabled = true;
+            offBtn.disabled = true;
+            connectBtn.disabled = false;
+          });
+        } catch (error) {
+          console.log(error);
+          statusMsg.innerText = "Error: " + error;
+        }
+      });
+
+      async function sendValue(val) {
+        if (characteristic) {
+          const data = new Uint8Array([val]);
+          await characteristic.writeValue(data);
+          console.log("Sent: " + val);
+        }
+      }
+
+      onBtn.addEventListener("click", () => sendValue(1));
+      offBtn.addEventListener("click", () => sendValue(0));
+    </script>
+  </body>
+</html>
