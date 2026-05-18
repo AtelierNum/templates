@@ -46,7 +46,7 @@ void setup(){
 
 Which then allows you to use `sideCarPrint(String str)` and `sideCarPrintln(String str)`;
 
-![wiring.jpg](wiring.jpg)
+![wiring.png](wiring.png)
 
 ## How to modify ? 🔩 🔨
 
