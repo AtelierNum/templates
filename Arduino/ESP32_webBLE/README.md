@@ -1,7 +1,7 @@
 ---
 template: true
 title: ESP32 <-BLE-> webpage
-thumbnail: some/local/folder/just/like/a/markdown/image/link
+thumbnail: thumbnail.jpg
 description: This enable communication between some arbitrary webpage and a nearby ESP32 through BLE
 language: en
 tags:
