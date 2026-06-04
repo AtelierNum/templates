@@ -11,7 +11,7 @@ tags:
   - video
 ---
 
-# Name of the file
+# p5.js Chroma Key
 
 **Level** : ![](https://img.shields.io/badge/Level-Advanced-red)
 
@@ -25,7 +25,7 @@ A computer
 
 ## Software dependencies 🌈 📂
 
-Just p5.js
+Just p5.js (which is already included)
 
 ## How to run ? 🚀
 
