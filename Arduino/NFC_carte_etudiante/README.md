@@ -3,7 +3,7 @@ template: true
 title: Lecture NFC de carte étudiant
 thumbnail: thumbnail.jpg
 description: Lit l'identifiant des cartes d'accès étudiants avec un arduino
-language: fr en just keep one (will be "en" by default since most templates have their redmes in english)
+language: fr
 tags:
   - NFC
   - arduino
@@ -19,7 +19,7 @@ Ce template permet de lire l'identifiant (et rien de plus) d'une puce ISO 14443-
 
 ## De quel matériel on a besoin ? 💾 🔌
 
-- Carte d'accçès étudiant
+- Carte d'accès étudiant
 - PN532
 - Arduino Uno
 
